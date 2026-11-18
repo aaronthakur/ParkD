@@ -1,0 +1,19 @@
+$kind: http-request
+name: 'Update Vehicle'
+method: PUT
+url: '{{base_url}}/api/vehicles/:id'
+order: 4000
+pathVariables:
+  - key: id
+    value: '{{vehicleId}}'
+    description: 'MongoDB ObjectId - auto-filled after running Create Vehicle'
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "status": "Exited",
+      "parkingFee": 100
+    }

@@ -1,0 +1,9 @@
+$kind: http-request
+name: 'Get Vehicle by ID'
+method: GET
+url: '{{base_url}}/api/vehicles/:id'
+order: 3000
+pathVariables:
+  - key: id
+    value: '{{vehicleId}}'
+    description: 'MongoDB ObjectId - auto-filled after running Create Vehicle'

@@ -1,0 +1,27 @@
+$kind: http-request
+name: 'Create Vehicle'
+method: POST
+url: '{{base_url}}/api/vehicles'
+order: 1000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "vehicleNumber": "MH12AB1234",
+      "vehicleType": "Car",
+      "ownerName": "John Doe",
+      "parkingFee": 50,
+      "status": "Parked"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const response = pm.response.json();
+      if (response._id) {
+          pm.collectionVariables.set('vehicleId', response._id);
+          console.log('Vehicle ID saved:', response._id);
+      }
